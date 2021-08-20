@@ -1,4 +1,4 @@
-Feature: Title of your feature
+Feature: Buscar Producto en OLX
 
   Scenario Outline: <Escenario> <Producto>
     Given que me encuentro en la pagina de OLX con la url <Url>
