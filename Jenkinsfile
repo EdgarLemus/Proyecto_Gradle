@@ -1,11 +1,13 @@
 pipeline {
-    agent any
-
+    
+    agent {
+        label 'AgenteSQA'
+    }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'gradle clean'
+                bat 'gradle clean'
             }
         }
         stage('Test') {
