@@ -13,12 +13,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                jiraAssignIssue idOrKey: 'Test-1', site: 'JiraToken', userName: 'juan.orjuela@sqasa.co'
             }
         }
     }
     post {
           success {
-            jiraNewIssue site: 'JiraToken'
+            echo 'success..'
           }
           failure {
             echo 'failure..'
