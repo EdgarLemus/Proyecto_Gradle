@@ -21,10 +21,10 @@ pipeline {
             echo 'Success..'
           }
           failure {
-            
+            echo 'failure..'
           }
           unsuccessful {
-            
+            echo 'unsuccessful..'
           }
     }
 
