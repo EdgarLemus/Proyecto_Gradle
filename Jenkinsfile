@@ -16,4 +16,11 @@ pipeline {
             }
         }
     }
+    post { 
+        success { 
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
 }
