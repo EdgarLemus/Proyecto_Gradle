@@ -18,7 +18,7 @@ pipeline {
     }
     post {
           success {
-            echo 'Success..'
+            jiraNewIssue site: 'JiraToken'
           }
           failure {
             echo 'failure..'
