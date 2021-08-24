@@ -16,11 +16,16 @@ pipeline {
             }
         }
     }
-    post { 
-        success { 
-            steps {
-                echo 'Hello World'
-            }
-        }
+    post {
+          success {
+            echo 'Success..'
+          }
+          failure {
+            
+          }
+          unsuccessful {
+            
+          }
     }
+
 }
