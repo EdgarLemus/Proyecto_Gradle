@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
      RESULTADOSTAGE = '' 
+        RESULTADOKEYJIRA = ''
    }
     stages {
         stage('Test') {
@@ -14,20 +15,17 @@ pipeline {
             }
         }
         stage('JIRA Get Issue') {
-            environment {
-                 RESULTADOKEYJIRA = ''
-                 }
             steps {
                 script {
                     try {
-                         def issue = jiraGetIssue idOrKey: 'RS-8', site: 'JiraToken'
-                        RESULTADOKEYJIRA = issue.data.toString()
-                        RESULTADOSTAGE = currentBuild.result
+                         def issue = jiraGetIssue idOrKey: 'RS-8', site: 'JiraToken'                        
                       } catch (Exception e) {
-                          echo 'Exception occurred: ' + e.toString()                          
-                          RESULTADOSTAGE = currentBuild.result
-                          echo RESULTADOSTAGE
-                      }                    
+                          echo 'Exception occurred: ' + e.toString()
+                      }
+                    RESULTADOSTAGE = currentBuild.result
+                    if(RESULTADOSTAGE == 'SUCCESS'){
+                        RESULTADOKEYJIRA = issue.data.toString()
+                    }
                 }
             }
         }
