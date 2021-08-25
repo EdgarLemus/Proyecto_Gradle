@@ -4,8 +4,9 @@ pipeline {
         label 'AgenteSQA'
     }
     environment {
-     RESULTADOSTAGE = '' 
+        RESULTADOSTAGE = '' 
         RESULTADOKEYJIRA = ''
+        JIRASERVER = 'JiraToken'
    }
     stages {
         stage('Test') {
@@ -18,7 +19,7 @@ pipeline {
             steps {
                 script {
                     try {
-                         def issue = jiraGetIssue idOrKey: 'RS-8', site: 'JiraToken'                        
+                         def issue = jiraGetIssue idOrKey: 'RS-7', site: JIRASERVER                        
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()
                       }
@@ -33,15 +34,13 @@ pipeline {
             steps {
                 script {
                     if(RESULTADOSTAGE != 'SUCCESS'){
-                        try{
-                            def jiraServer = 'JiraToken'
-        
+                        try{                           
                             def testIssue = [fields : [
                                                         project: [id: '10154'],
                                                         summary: 'Sinergia Tecnologica de Jira desde Jenkins con Banco Popular',
                                                         description: 'Realiza la integracion desde Jenkins mediante un Pipeline a Jira luego de ejecutar las pruebas.',
                                                         issuetype: [id: '10004']]]
-                        response = jiraNewIssue issue: testIssue , site: jiraServer
+                        response = jiraNewIssue issue: testIssue , site: JIRASERVER
 
                         echo response.successful.toString()
                         echo response.data.toString()
@@ -53,6 +52,23 @@ pipeline {
                 }
             }
         }
+         stage('JIRA Comment Issue') {
+            steps {
+                script {
+                    if(RESULTADOSTAGE == 'SUCCESS'){
+                      try{
+                      def comment = [ 
+                        body: 'test comment'
+                      ]
+                      jiraEditComment site: JIRASERVER, idOrKey: RESULTADOKEYJIRA.split(',')[11].split(':')[1], commentId: '1000', input: comment
+                    }catch (Exception e) {
+                          echo 'Exception occurred: ' + e.toString()                          
+                          RESULTADOSTAGE = currentBuild.result
+                      } 
+                    } 
+                }
+            }
+         }
     }
     post {
           success {
