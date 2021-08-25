@@ -23,7 +23,7 @@ pipeline {
                       def comment = [ 
                         body: 'test comment'
                       ]
-                      jiraAddComment idOrKey: 'RS-7', input: comment
+                      jiraAddComment site: JIRASERVER, idOrKey: 'RS-7', input: comment
                     }catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()                          
                           RESULTADOSTAGE = currentBuild.result
