@@ -21,8 +21,7 @@ pipeline {
                     try {
                          def issue = jiraGetIssue idOrKey: 'RS-7', site: JIRASERVER
                         RESULTADOSTAGE = 'SUCCESS'
-                        RESULTADOKEYJIRA = issue.data.toString()
-                    }
+                        RESULTADOKEYJIRA = issue.data.toString()                   
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()
                         RESULTADOSTAGE = 'FAILED'
