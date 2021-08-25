@@ -9,7 +9,13 @@ pipeline {
         JIRASERVER = 'JiraToken'
    }
     stages {
-        stage('Test') {
+        stage('Clean Past Tests') {
+            steps {
+                echo 'Testing..'
+                bat 'gradle clean'
+            }
+        }
+        stage('Run tests') {
             steps {
                 echo 'Testing..'
                 bat 'gradle clean'
