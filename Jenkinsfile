@@ -4,7 +4,6 @@ pipeline {
         label 'AgenteSQA'
     }
     environment {
-     RESULTADOKEYJIRA = ''
      RESULTADOSTAGE = '' 
    }
     stages {
@@ -15,6 +14,9 @@ pipeline {
             }
         }
         stage('JIRA Get Issue') {
+            environment {
+                 RESULTADOKEYJIRA = ''
+                 }
             steps {
                 script {
                     try {
