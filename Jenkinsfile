@@ -10,18 +10,14 @@ pipeline {
                 bat 'gradle clean'
             }
         }
-        stage('JIRA') {
-           def testIssue = [fields: [ project: [id: '10154'],
-                                       summary: 'New JIRA Created from Jenkins.',
-                                       description: 'New JIRA Created from Jenkins.',
-                                       customfield_1000: 'customValue',
-                                       issuetype: [id: '3']]]
-
-            response = jiraNewIssue issue: testIssue
-
-            echo response.successful.toString()
-            echo response.data.toString()
-  }
+        stage('JIRA Issue') {
+            steps {
+                script {
+                    def issue = jiraGetIssue idOrKey: 'RS-4', site: 'JiraToken'
+                    echo issue.data.toString()
+                }
+            }            
+        }
     }
     post {
           success {
