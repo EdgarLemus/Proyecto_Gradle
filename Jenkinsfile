@@ -23,7 +23,7 @@ pipeline {
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()
                       }
-                    RESULTADOSTAGE = currentBuild.result
+                    RESULTADOSTAGE = currentBuild.result.toString()
                     if(RESULTADOSTAGE == 'SUCCESS'){
                         RESULTADOKEYJIRA = issue.data.toString()
                     }
@@ -82,7 +82,7 @@ pipeline {
           success {
             echo 'success..'
               //echo RESULTADOKEYJIRA.split(',')[11].split(':')[1]
-              echo currentBuild.result
+              echo currentBuild.result.toString()
           }
           failure {
             echo 'failure..'
