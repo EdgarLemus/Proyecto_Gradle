@@ -1,5 +1,5 @@
 pipeline {
-    
+    def resultado = ""
     agent {
         label 'AgenteSQA'
     }
@@ -13,9 +13,10 @@ pipeline {
         stage('JIRA Issue') {
             steps {
                 script {
-                    def issue = jiraGetIssue idOrKey: 'RS-8', site: 'JiraToken'
-                    echo issue.data.toString()
-                    echo currentBuild.result
+                    def issue = jiraGetIssue idOrKey: 'RS-4', site: 'JiraToken'
+                   resultado = issue.data.toString()
+                    echo resultado
+                    
                 }
             }            
         }
@@ -23,7 +24,7 @@ pipeline {
     post {
           success {
             echo 'success..'
-              
+              echo currentBuild.result
           }
           failure {
             echo 'failure..'
