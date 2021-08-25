@@ -34,13 +34,15 @@ pipeline {
                 script {
                     if(RESULTADOSTAGE != 'SUCCESS'){
                         try{
-                            def testIssue = [fields: [ project: [id: '10154'],
-                                       summary: 'New JIRA Created from Jenkins.',
-                                       description: 'New JIRA Created from Jenkins.',
-                                       customfield_1000: 'customValue',
-                                       issuetype: [id: '10004']]]
+                            def jiraServer = 'JiraToken'
+        
+                            def testIssue = [fields : [
+                                                        project: [id: '10154'],
+                                                        summary: 'Sinergia Tecnologica de Jira desde Jenkins con Banco Popular',
+                                                        description: 'Realiza la integracion desde Jenkins mediante un Pipeline a Jira luego de ejecutar las pruebas.',
+                                                        issuetype: [id: '10004']]]
+                        response = jiraNewIssue issue: testIssue , site: jiraServer
 
-                        response = jiraNewIssue issue: testIssue
                         echo response.successful.toString()
                         echo response.data.toString()
                         }catch (Exception e) {
