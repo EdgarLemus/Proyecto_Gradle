@@ -84,6 +84,13 @@ pipeline {
             echo 'success..'
               //echo RESULTADOKEYJIRA.split(',')[11].split(':')[1]
               echo currentBuild.result.toString()
+              
+              
+            publishTestResults serverAddress: 'https://bancopopularco.atlassian.net/',
+                    projectKey: 'RS',
+                    filePath:'target/cucumber/*.json',
+                    format: 'Cucumber',
+                    autoCreateTestCases: true 
           }
           failure {
             echo 'failure..'
