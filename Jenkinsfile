@@ -26,6 +26,7 @@ pipeline {
                     if(RESULTADOSTAGE == 'SUCCESS'){
                         RESULTADOKEYJIRA = issue.data.toString()
                     }
+                    echo currentBuild.result
                 }
             }
         }
