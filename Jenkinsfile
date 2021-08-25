@@ -22,6 +22,7 @@ pipeline {
     post {
           success {
             echo 'success..'
+              echo currentBuild.result
           }
           failure {
             echo 'failure..'
