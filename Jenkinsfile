@@ -1,8 +1,11 @@
 pipeline {
-    def resultado = ""
+    
     agent {
         label 'AgenteSQA'
     }
+    environment {
+     RESULTADO = ""
+   }
     stages {
         stage('Test') {
             steps {
@@ -14,8 +17,8 @@ pipeline {
             steps {
                 script {
                     def issue = jiraGetIssue idOrKey: 'RS-4', site: 'JiraToken'
-                   resultado = issue.data.toString()
-                    echo resultado
+                    RESULTADO = issue.data.toString()
+                    echo RESULTADO
                     
                 }
             }            
