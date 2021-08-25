@@ -18,11 +18,9 @@ pipeline {
             steps {
                 script {
                     try {
-                         def issue = jiraGetIssue idOrKey: 'RS-4', site: 'JiraToken'
+                         def issue = jiraGetIssue idOrKey: 'RS-8', site: 'JiraToken'
                         RESULTADOSTAGE = currentBuild.result
-                        if(RESULTADOSTAGE == 'SUCCESS'){
                         RESULTADOKEYJIRA = issue.data.toString()
-                        }
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()                          
                           RESULTADOSTAGE = currentBuild.result
