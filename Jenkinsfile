@@ -33,8 +33,10 @@ pipeline {
         stage('JIRA Create Issue') {
             steps {
                 script {
-                    if(RESULTADOSTAGE != 'SUCCESS'){
-                        try{                           
+                    if(RESULTADOSTAGE == 'SUCCESS'){
+                    
+                    }else{
+                            try{                           
                             def testIssue = [fields : [
                                                         project: [id: '10154'],
                                                         summary: 'Sinergia Tecnologica de Jira desde Jenkins con Banco Popular',
@@ -48,7 +50,7 @@ pipeline {
                           echo 'Exception occurred: ' + e.toString()                          
                           RESULTADOSTAGE = currentBuild.result
                       }
-                    }                           
+                    }                       
                 }
             }
         }
