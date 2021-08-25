@@ -18,7 +18,7 @@ pipeline {
                 script {
                     def issue = jiraGetIssue idOrKey: 'RS-4', site: 'JiraToken'
                     RESULTADO = issue.data.toString()
-                    echo RESULTADO
+                    
                     
                 }
             }            
@@ -27,6 +27,7 @@ pipeline {
     post {
           success {
             echo 'success..'
+              echo RESULTADO
               echo currentBuild.result
           }
           failure {
