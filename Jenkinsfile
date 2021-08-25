@@ -11,14 +11,12 @@ pipeline {
     stages {
         stage('Clean Past Tests') {
             steps {
-                echo 'Testing..'
                 bat 'gradle clean'
             }
         }
         stage('Run tests') {
             steps {
-                echo 'Testing..'
-                bat 'gradle clean'
+                bat 'gradle test'
             }
         }
         stage('JIRA Get Issue') {
