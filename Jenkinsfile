@@ -33,6 +33,8 @@ pipeline {
         stage('JIRA Create Issue') {
             steps {
                 script {
+                    echo 'Resultado de stage get'
+                    echo RESULTADOSTAGE
                     if(RESULTADOSTAGE == 'SUCCESS'){
                     
                     }else{
@@ -57,6 +59,8 @@ pipeline {
          stage('JIRA Comment Issue') {
             steps {
                 script {
+                    echo 'Resultado de stage create'
+                    echo RESULTADOSTAGE
                     if(RESULTADOSTAGE == 'SUCCESS'){
                       try{
                       def comment = [ 
