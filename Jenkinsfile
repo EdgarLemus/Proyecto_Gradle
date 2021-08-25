@@ -26,29 +26,8 @@ pipeline {
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()                          
                           RESULTADOSTAGE = currentBuild.result
+                          echo RESULTADOSTAGE
                       }                    
-                }
-            }
-        }
-        stage('JIRA Create Issue') {
-            steps {
-                script {
-                    if(RESULTADOSTAGE != 'SUCCESS'){
-                        try{
-                            def testIssue = [fields: [ project: [id: '10154'],
-                                       summary: 'New JIRA Created from Jenkins.',
-                                       description: 'New JIRA Created from Jenkins.',
-                                       customfield_1000: 'customValue',
-                                       issuetype: [id: '3']]]
-
-                        response = jiraNewIssue issue: testIssue
-                        echo response.successful.toString()
-                        echo response.data.toString()
-                        }catch (Exception e) {
-                          echo 'Exception occurred: ' + e.toString()                          
-                          RESULTADOSTAGE = currentBuild.result
-                      }
-                    }                           
                 }
             }
         }
@@ -66,5 +45,4 @@ pipeline {
             echo 'unsuccessful..'
           }
     }
-
 }
