@@ -19,19 +19,21 @@ pipeline {
             steps {
                 script {
                     try {
-                         def issue = jiraGetIssue idOrKey: 'RS-7', site: JIRASERVER                        
+                         def issue = jiraGetIssue idOrKey: 'RS-7', site: JIRASERVER
+                        RESULTADOSTAGE = 'SUCCESS'
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()
+                        RESULTADOSTAGE = 'FAILED'
                       }
-                    RESULTADOSTAGE = currentBuild.result.toString()
+                    
                     if(RESULTADOSTAGE == 'SUCCESS'){
                         RESULTADOKEYJIRA = issue.data.toString()
+                        echo RESULTADOKEYJIRA
                     }
                     echo 'Resultado de stage final get'
                     echo RESULTADOSTAGE
                 }
             }
-            echo currentBuild.result
         }
         stage('JIRA Create Issue') {
             steps {
