@@ -13,16 +13,17 @@ pipeline {
         stage('JIRA Issue') {
             steps {
                 script {
-                    def issue = jiraGetIssue idOrKey: 'RS-4', site: 'JiraToken'
+                    def issue = jiraGetIssue idOrKey: 'RS-8', site: 'JiraToken'
                     echo issue.data.toString()
                 }
-            }            
+            }
+            echo currentBuild.result
         }
     }
     post {
           success {
             echo 'success..'
-              echo currentBuild.result
+              
           }
           failure {
             echo 'failure..'
