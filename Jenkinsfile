@@ -24,7 +24,7 @@ pipeline {
                       }
                     RESULTADOSTAGE = currentBuild.result
                     if(RESULTADOSTAGE == 'SUCCESS'){
-                        RESULTADOKEYJIRA = issue.data.toString()
+                        
                     }
                 }
             }
