@@ -27,6 +27,8 @@ pipeline {
                     if(RESULTADOSTAGE == 'SUCCESS'){
                         RESULTADOKEYJIRA = issue.data.toString()
                     }
+                    echo 'Resultado de stage final get'
+                    echo RESULTADOSTAGE
                 }
             }
         }
