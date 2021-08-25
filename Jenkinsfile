@@ -21,17 +21,16 @@ pipeline {
                     try {
                          def issue = jiraGetIssue idOrKey: 'RS-7', site: JIRASERVER
                         RESULTADOSTAGE = 'SUCCESS'
+                        RESULTADOKEYJIRA = issue.data.toString()
+                    }
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()
                         RESULTADOSTAGE = 'FAILED'
                       }
                     
-                    if(RESULTADOSTAGE == 'SUCCESS'){
-                        RESULTADOKEYJIRA = issue.data.toString()
-                        echo RESULTADOKEYJIRA
-                    }
+                    
                     echo 'Resultado de stage final get'
-                    echo RESULTADOSTAGE
+                    echo RESULTADOKEYJIRA
                 }
             }
         }
