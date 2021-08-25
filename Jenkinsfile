@@ -4,8 +4,8 @@ pipeline {
         label 'AgenteSQA'
     }
     environment {
-     RESULTADOKEYJIRA = ""
-     RESULTADOSTAGE = "" 
+     RESULTADOKEYJIRA = ''
+     RESULTADOSTAGE = '' 
    }
     stages {
         stage('Test') {
