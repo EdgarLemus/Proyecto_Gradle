@@ -31,6 +31,7 @@ pipeline {
                     echo RESULTADOSTAGE
                 }
             }
+            echo currentBuild.result
         }
         stage('JIRA Create Issue') {
             steps {
