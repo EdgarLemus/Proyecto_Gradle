@@ -24,7 +24,7 @@ pipeline {
                       }
                     RESULTADOSTAGE = currentBuild.result
                     if(RESULTADOSTAGE == 'SUCCESS'){
-                        
+                        RESULTADOKEYJIRA = issue.data.toString()
                     }
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
     post {
           success {
             echo 'success..'
-              echo RESULTADOKEYJIRA.split(',')[11].split(':')[1]
+              //echo RESULTADOKEYJIRA.split(',')[11].split(':')[1]
               echo currentBuild.result
           }
           failure {
