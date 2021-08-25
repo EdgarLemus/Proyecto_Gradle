@@ -27,7 +27,7 @@ pipeline {
     post {
           success {
             echo 'success..'
-              echo RESULTADO.split(',')[0]
+              echo RESULTADO.split(',')[11]
               echo currentBuild.result
           }
           failure {
