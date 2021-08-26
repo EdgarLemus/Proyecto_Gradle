@@ -11,7 +11,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 		features = "src/test/resources/features/OLXBuscador.feature",
 		glue = "stepDefinitions",
 		snippets = SnippetType.CAMELCASE,
-	format = {"pretty", "html:target/cucumber"}
+	format = {"pretty", "json:target/cucumber"}
 		)
 public class OXLBuscadorRunner {
 
