@@ -37,7 +37,7 @@ echo %$finaljwt%
 :: Task info
 set "$taskName=My task Jenkins"
 set "$taskDescription=Task description"
-set "$automationFramework=Cucumber"
+set "$automationFramework=junit"
 set "$projectKey=RS"
 set "$versionName=Unscheduled"
 
