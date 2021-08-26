@@ -35,9 +35,9 @@ echo %$finaljwt%
 :: =========================================
 
 :: Task info
-set "$taskName=My task Jenkins"
+set "$taskName=My task Jenkins2"
 set "$taskDescription=Task description"
-set "$automationFramework=junit"
+set "$automationFramework=Selenium"
 set "$projectKey=RS"
 set "$versionName=Unscheduled"
 
