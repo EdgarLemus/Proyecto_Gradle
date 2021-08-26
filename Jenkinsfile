@@ -86,15 +86,7 @@ pipeline {
     post {
           success {
             echo 'success..'
-              //echo RESULTADOKEYJIRA.split(',')[11].split(':')[1]
-              echo currentBuild.result.toString()
-              
-              
-            publishTestResults serverAddress: 'https://bancopopularco.atlassian.net/',
-                    projectKey: 'RS',
-                    filePath:'target/cucumber/*.json',
-                    format: 'Cucumber',
-                    autoCreateTestCases: true 
+              bat ('call "cicd-script.bat"');
           }
           failure {
             echo 'failure..'
