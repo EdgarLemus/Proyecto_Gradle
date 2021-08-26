@@ -37,7 +37,7 @@ echo %$finaljwt%
 :: Task info
 set "$taskName=My task Jenkins"
 set "$taskDescription=Task description"
-set "$automationFramework=junit"
+set "$automationFramework=Cucumber"
 set "$projectKey=RS"
 set "$versionName=Unscheduled"
 
@@ -53,7 +53,7 @@ set "$appendDateTimeInFolderName=true"
 set "$assigneeUser=557058:5d9c8f2950c9170dc568fa92"
 
 :: Fully-qualitified name of the test result file
-set "$resultPath=@\"C:/etc\rc.d\init.d\jenkins\workspace\PipelineJira\target\site\serenity\SERENITY-JUNIT-43a03ed18fe4245b7a765eee33e28996ec22e2838d6694b7cd492b6f3fc5928b.xml/"
+set "$resultPath=@\"C:/etc\rc.d\init.d\jenkins\workspace\PipelineJira\target\cucumber\cucumber.json/"
 
 :: =========================================
 ::  Create an automation task, run it, send test results to Zephyr.
