@@ -9,69 +9,22 @@ pipeline {
         JIRASERVER = 'JiraToken'
    }
     stages {     
-        stage('JIRA Get Issue') {
-            steps {
-                script {
-                    try {
-                         def issue = jiraGetIssue idOrKey: 'RS-99', site: JIRASERVER
-                        RESULTADOSTAGE = 'SUCCESS'
-                        RESULTADOKEYJIRA = issue.data.toString()                   
-                      } catch (Exception e) {
-                          echo 'Exception occurred: ' + e.toString()
-                        RESULTADOSTAGE = 'FAILED'
-                      }
-                    
-                    
-                    echo 'Resultado de stage final get'
-                    echo RESULTADOKEYJIRA
-                }
-            }
-        }
         stage('JIRA Create Issue') {
             steps {
                 script {
-                    echo 'Resultado de stage get'
-                    echo RESULTADOSTAGE
-                    if(RESULTADOSTAGE == 'SUCCESS'){
-                    
-                    }else{
-                            try{                           
+                        
                             def testIssue = [fields : [
                                                         project: [id: '10154'],
                                                         summary: 'Sinergia Tecnologica de Jira desde Jenkins con Banco Popular',
                                                         description: 'Realiza la integracion desde Jenkins mediante un Pipeline a Jira luego de ejecutar las pruebas.',
-                                                        issuetype: [id: '10004']]]
+                                                        issuetype: [id: '10071']]]
                         response = jiraNewIssue issue: testIssue , site: JIRASERVER
 
                         echo response.successful.toString()
-                        echo response.data.toString()
-                        }catch (Exception e) {
-                          echo 'Exception occurred: ' + e.toString()                          
-                          RESULTADOSTAGE = currentBuild.result
-                      }
-                    }                       
+                        echo response.data.toString()                                        
                 }
             }
         }
-         stage('JIRA Comment Issue') {
-            steps {
-                script {
-                    echo 'Resultado de stage create'
-                    echo RESULTADOSTAGE
-                    if(RESULTADOSTAGE == 'SUCCESS'){
-                      try{
-                      def comment = [ 
-                        body: 'test comment'
-                      ]
-                      jiraAddComment site: JIRASERVER, idOrKey: RESULTADOKEYJIRA.split(',')[11].split(':')[1], input: comment
-                    }catch (Exception e) {
-                          echo 'Exception occurred: ' + e.toString()                          
-                          RESULTADOSTAGE = currentBuild.result
-                      } 
-                    } 
-                }
-            }
-         }
     }
     post {
           success {
