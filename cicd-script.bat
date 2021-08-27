@@ -35,7 +35,7 @@ echo %$finaljwt%
 :: =========================================
 
 :: Task info
-set "$taskName=Integracion Zephyr Banco Popular"
+set "$taskName=Zephyr Banco Popular"
 set "$taskDescription=Automatizacion de flujo de prueba E2E front"
 set "$automationFramework=Cucumber"
 set "$projectKey=RS"
