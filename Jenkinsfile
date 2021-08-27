@@ -26,7 +26,7 @@ pipeline {
     post {
           success {
             echo 'success..'
-              bat ('call "cicd-script.bat"');
+              
           }
           failure {
             echo 'failure..'
