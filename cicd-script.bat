@@ -35,8 +35,8 @@ echo %$finaljwt%
 :: =========================================
 
 :: Task info
-set "$taskName=My task Jenkins2"
-set "$taskDescription=Task description"
+set "$taskName=Integracion Zephyr Banco Popular"
+set "$taskDescription=Automatizacion de flujo de prueba E2E front"
 set "$automationFramework=Cucumber"
 set "$projectKey=RS"
 set "$versionName=Unscheduled"
