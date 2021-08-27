@@ -17,6 +17,7 @@ pipeline {
                         if(RESULTADOSTAGE == 'SUCCESS'){
                         RESULTADOKEYJIRA = issue.data.toString()
                         }
+                        echo issue.data.toString()
                       } catch (Exception e) {
                           echo 'Exception occurred: ' + e.toString()                          
                           RESULTADOSTAGE = currentBuild.result
