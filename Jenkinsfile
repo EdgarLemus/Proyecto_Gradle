@@ -8,17 +8,7 @@ pipeline {
         RESULTADOKEYJIRA = ''
         JIRASERVER = 'JiraToken'
    }
-    stages {
-        stage('Clean Past Tests') {
-            steps {
-                bat 'gradle clean'
-            }
-        }
-        stage('Run tests') {
-            steps {
-                bat 'gradle test'
-            }
-        }
+    stages {     
         stage('JIRA Get Issue') {
             steps {
                 script {
