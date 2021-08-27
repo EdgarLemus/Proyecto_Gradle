@@ -20,7 +20,9 @@ pipeline {
             }
         }
         stage('Publish Report SerenityBDD'){
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:\\etc\\rc.d\\init.d\\jenkins\\workspace\\PipelineJira\\target\\site\\serenity', reportFiles: 'index.html', reportName: 'SerenityBDD Report', reportTitles: ''])
+           steps {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:\\etc\\rc.d\\init.d\\jenkins\\workspace\\PipelineJira\\target\\site\\serenity', reportFiles: 'index.html', reportName: 'SerenityBDD Report', reportTitles: ''])
+            }
         }
     }
     post {
