@@ -42,7 +42,7 @@ set "$projectKey=RS"
 set "$versionName=Unscheduled"
 
 :: Cycle info
-set "$cycleName=CICD Automation"
+set "$cycleName=Ciclo 1"
 set "$createNewCycle=true"
 set "$appendDateTimeInCycleName=false"
 
